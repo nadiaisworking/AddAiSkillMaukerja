@@ -957,22 +957,44 @@ p.error-text {
         margin-bottom: 20px;
     }
 
-    /* Enlarge the text and elements slightly to fill the new space */
-    h1 {
-        font-size: 3.5rem;
-        margin-bottom: 15px;
+    /* Make the robot the main attraction by enlarging it specifically on desktop */
+    .robot-base {
+        transform: scale(2.2);
+        /* Enormously enlarge the robot relative to its container */
+        animation: robotFloatDesktop 3.5s ease-in-out infinite;
     }
 
-    .prize-banner {
-        font-size: 1.5rem;
-        padding: 15px 30px;
+    @keyframes robotFloatDesktop {
+
+        0%,
+        100% {
+            transform: scale(2.2) translateY(0);
+        }
+
+        50% {
+            transform: scale(2.2) translateY(-10px);
+        }
+    }
+
+    /* Enlarge the text safely, keeping focus on robot */
+    h1 {
+        font-size: 2.8rem;
         margin-bottom: 20px;
     }
 
+    .prize-banner {
+        font-size: 1.25rem;
+        padding: 12px 25px;
+        margin-bottom: 30px;
+        /* More space before robot */
+    }
+
     .cta-btnPrimary {
-        font-size: 1.8rem;
-        padding: 25px 50px;
-        border-radius: 35px;
+        font-size: 1.5rem;
+        padding: 20px 40px;
+        border-radius: 30px;
+        margin-top: 30px;
+        /* More space below robot */
     }
 
     /* Existing Completion Screen Enhancements */
