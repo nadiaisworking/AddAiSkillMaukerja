@@ -865,6 +865,11 @@ h1 {
    Ensure Completion screen fits without scrolling
    ========================================= */
 @media (min-width: 769px) {
+    body {
+        background-size: 100% 100%;
+        background-attachment: scroll;
+    }
+
     .completion-new {
         padding: 2vh 20px !important;
         justify-content: center;
