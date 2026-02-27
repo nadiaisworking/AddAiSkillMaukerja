@@ -942,6 +942,40 @@ p.error-text {
         background-attachment: fixed;
     }
 
+    /* Expand the main container layout to remove huge gaps on desktop */
+    #app {
+        width: 95%;
+        max-width: 1400px;
+        height: 95vh;
+        max-height: 950px;
+    }
+
+    /* Make the logo much more prominent for branding */
+    .brand-logo img {
+        height: 60px;
+        /* Increased from 35px */
+        margin-bottom: 20px;
+    }
+
+    /* Enlarge the text and elements slightly to fill the new space */
+    h1 {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+    }
+
+    .prize-banner {
+        font-size: 1.5rem;
+        padding: 15px 30px;
+        margin-bottom: 20px;
+    }
+
+    .cta-btnPrimary {
+        font-size: 1.8rem;
+        padding: 25px 50px;
+        border-radius: 35px;
+    }
+
+    /* Existing Completion Screen Enhancements */
     .completion-new {
         padding: 2vh 20px !important;
         justify-content: center;
