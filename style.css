@@ -446,6 +446,34 @@ h1 {
     line-height: 1.5;
 }
 
+/* Input Fields for Modal */
+.input-field {
+    width: 100%;
+    padding: 15px;
+    border: 3px solid #E0E0E0;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-family: var(--font-ui);
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 5px;
+}
+
+.input-field:focus {
+    border-color: var(--pop-pink);
+}
+
+p.error-text {
+    color: var(--primary-red);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    display: none;
+    text-align: left;
+}
+
 .btn-secondary {
     background: var(--pop-orange);
     color: white;

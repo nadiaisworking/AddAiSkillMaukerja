@@ -350,9 +350,13 @@ document.addEventListener('DOMContentLoaded', () => {
             state.answers.usage = droppedValue;
 
             setTimeout(() => {
-                completeGame();
+                showEmailPopup();
             }, 800);
         }
+    }
+
+    function showEmailPopup() {
+        document.getElementById('email-overlay').classList.remove('hidden');
     }
 
     function completeGame() {
@@ -371,6 +375,30 @@ document.addEventListener('DOMContentLoaded', () => {
         switchScreen('gameplay');
         setupTokens(); // Initialize Stage 1 here
     });
+
+    const submitEmailBtn = document.getElementById('submit-email-btn');
+    const emailInput = document.getElementById('user-email');
+    const emailError = document.getElementById('email-error');
+    const emailOverlay = document.getElementById('email-overlay');
+
+    if (submitEmailBtn) {
+        submitEmailBtn.addEventListener('click', () => {
+            const email = emailInput.value.trim();
+            // Basic email validation
+            if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                emailError.style.display = 'none';
+                state.answers.email = email;
+
+                // Hide popup
+                emailOverlay.classList.add('hidden');
+
+                // Proceed to completion screen
+                completeGame();
+            } else {
+                emailError.style.display = 'block';
+            }
+        });
+    }
 
     const replayBtn = document.getElementById('replay-btn');
     if (replayBtn) {
