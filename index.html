@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI Skill Maukerja Activation</title>
+    <link rel="stylesheet" href="style.css">
+    <link <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Fredoka+One&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Lobby Screen -->
+        <section id="lobby" class="screen active">
+            <div class="content-wrapper">
+                <header>
+                    <h1>Aktifkan Robot AI</h1>
+                </header>
+
+                <div class="prize-banner">
+                    🏆 MENANGI RM50 X 3 PEMENANG! 🏆
+                </div>
+
+                <div class="robot-container inactive" id="lobby-robot">
+                    <!-- Robot Asset -->
+                    <img src="assets/robot_2d_red.svg" alt="Red Robot" class="robot-base">
+                </div>
+
+
+
+                <button id="start-btn" class="cta-btnPrimary">MULA SEKARANG</button>
+            </div>
+        </section>
+
+        <!-- Tutorial Modal -->
+        <div id="tutorial-overlay" class="overlay hidden">
+            <div class="modal">
+                <h2>CARA BERMAIN</h2>
+                <div class="tutorial-graphic">
+                    <!-- Drag animation graphic -->
+                </div>
+                <div class="tutorial-text" style="text-align: left; padding: 0 10px; margin-bottom: 20px;">
+                    <ol
+                        style="padding-left: 20px; font-weight: 500; font-size: 1.1rem; color: #444; line-height: 1.6; margin-bottom: 15px;">
+                        <li style="margin-bottom: 8px;">Seret skill AI berdasarkan pengalaman kerja anda ke robot</li>
+                        <li style="margin-bottom: 8px;">Aktifkan semua 3 bahagian robot</li>
+                        <li style="margin-bottom: 8px;">Skill AI anda akan dikemas kini secara automatik dalam profil
+                            Maukerja</li>
+                    </ol>
+                    <p style="font-size: 1.1rem; color: #444; margin: 0;">Lengkapkan semua tahap untuk masuk cabutan
+                        hadiah!</p>
+                </div>
+                <button id="tutorial-skip" class="btn-secondary">FAHAM</button>
+            </div>
+        </div>
+
+        <!-- Gameplay Screen -->
+        <section id="gameplay" class="screen hidden">
+            <div class="game-container">
+                <!-- Left Column (70%) -->
+                <div class="game-left">
+                    <p class="instruction-main">Sila pilih kemahiran AI mengikut pengalaman anda.</p>
+
+                    <div class="drag-box">
+                        <p class="instruction-sub">Drag skill ke arah robot.</p>
+                        <div id="token-container" class="tokens">
+                            <!-- Draggable tokens will be injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (30%) -->
+                <div class="game-right">
+                    <div class="robot-stage-container">
+                        <div id="game-robot" class="robot">
+                            <!-- Inline SVG for styling individual parts -->
+                            <svg id="robot-svg" width="100%" height="100%" viewBox="0 0 300 400" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="bodyGrad" x1="150" y1="50" x2="150" y2="400"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" stop-color="#ee3c4d" />
+                                        <stop offset="1" stop-color="#C41C30" />
+                                    </linearGradient>
+                                    <linearGradient id="screenGrad" x1="150" y1="75" x2="150" y2="155"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" stop-color="#481368" />
+                                        <stop offset="1" stop-color="#2D0F41" />
+                                    </linearGradient>
+                                    <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1" objectBoundingBox="true">
+                                        <stop offset="0" stop-color="#FFD700" />
+                                        <stop offset="1" stop-color="#FFB800" />
+                                    </linearGradient>
+                                    <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1" objectBoundingBox="true">
+                                        <stop offset="0" stop-color="white" stop-opacity="0.4" />
+                                        <stop offset="0.5" stop-color="white" stop-opacity="0.1" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- HEAD GROUP -->
+                                <g id="head" class="robot-part">
+                                    <rect x="135" y="30" width="30" height="25" fill="#A01020" />
+                                    <rect x="75" y="50" width="150" height="130" rx="25" fill="url(#bodyGrad)" />
+                                    <path d="M75 155 Q150 160 225 155 L225 160 Q150 170 75 160 Z" fill="#900C1C"
+                                        opacity="0.5" />
+                                    <path d="M77 170 Q75 170 75 168 V70 Q75 52 93 52 H207 Q223 52 225 68" stroke="white"
+                                        stroke-width="4" stroke-opacity="0.3" fill="none" />
+
+                                    <g>
+                                        <circle cx="60" cy="115" r="18" fill="url(#goldGrad)" />
+                                        <circle cx="60" cy="115" r="12" fill="none" stroke="#F5A623" stroke-width="2" />
+                                        <rect x="70" y="110" width="10" height="10" fill="#900C1C" />
+                                    </g>
+                                    <g>
+                                        <circle cx="240" cy="115" r="18" fill="url(#goldGrad)" />
+                                        <circle cx="240" cy="115" r="12" fill="none" stroke="#F5A623"
+                                            stroke-width="2" />
+                                        <rect x="220" y="110" width="10" height="10" fill="#900C1C" />
+                                    </g>
+
+                                    <rect x="90" y="70" width="120" height="90" rx="15" fill="black" stroke="#3A1550"
+                                        stroke-width="4" />
+                                    <rect x="92" y="72" width="116" height="86" rx="13" fill="url(#screenGrad)" />
+                                    <path d="M95 75 H150 L130 110 H95 V75 Z" fill="white" opacity="0.1" />
+
+                                    <rect x="115" y="95" width="18" height="28" rx="6" fill="#00FF94">
+                                        <animate attributeName="opacity" values="1;0.6;1" dur="2s"
+                                            repeatCount="indefinite" />
+                                    </rect>
+                                    <rect x="167" y="95" width="18" height="28" rx="6" fill="#00FF94">
+                                        <animate attributeName="opacity" values="1;0.6;1" dur="2s"
+                                            repeatCount="indefinite" />
+                                    </rect>
+                                    <path d="M125 140 Q150 155 175 140" stroke="white" stroke-width="5"
+                                        stroke-linecap="round" />
+
+                                    <!-- Logical Drop Zone for Head -->
+                                    <rect class="drop-target" data-target="head" x="50" y="20" width="200" height="160"
+                                        fill="transparent" />
+                                </g>
+
+                                <!-- ARMS (Attached to body logic mentally, but keep separate group) -->
+                                <g id="arms" class="robot-part">
+                                    <path d="M85 215 Q50 240 60 270" stroke="#2D0F41" stroke-width="18"
+                                        stroke-linecap="round" />
+                                    <circle cx="60" cy="275" r="18" fill="url(#goldGrad)" />
+
+                                    <path d="M215 215 Q250 240 240 270" stroke="#2D0F41" stroke-width="18"
+                                        stroke-linecap="round" />
+                                    <circle cx="240" cy="275" r="18" fill="url(#goldGrad)" />
+                                </g>
+
+                                <!-- BODY GROUP -->
+                                <g id="body" class="robot-part">
+                                    <rect x="125" y="180" width="50" height="20" fill="#2D0F41" />
+
+                                    <path d="M85 200 H215 L205 290 H95 L85 200 Z" fill="url(#bodyGrad)" />
+                                    <path d="M75 200 Q85 190 100 200 V230 H75 V200 Z" fill="#900C1C" />
+                                    <path d="M225 200 Q215 190 200 200 V230 H225 V200 Z" fill="#900C1C" />
+
+                                    <rect x="110" y="215" width="80" height="50" rx="8" fill="#FF478D" stroke="#D4145A"
+                                        stroke-width="3" />
+                                    <path d="M112 217 H188 V237 H112 V217 Z" fill="white" opacity="0.2" />
+                                    <circle cx="130" cy="240" r="6" fill="white" />
+                                    <circle cx="150" cy="240" r="6" fill="white" />
+                                    <circle cx="170" cy="240" r="6" fill="white" />
+
+                                    <path d="M100 290 H200 L190 310 H110 L100 290 Z" fill="#2D0F41" />
+
+                                    <!-- Logical Drop Zone for Body -->
+                                    <rect class="drop-target" data-target="body" x="70" y="180" width="160" height="130"
+                                        fill="transparent" />
+                                </g>
+
+                                <!-- LEGS -->
+                                <g id="legs" class="robot-part">
+                                    <rect x="110" y="300" width="25" height="40" rx="5" fill="#900C1C" />
+                                    <rect x="165" y="300" width="25" height="40" rx="5" fill="#900C1C" />
+
+                                    <path d="M100 340 H145 V380 A10 10 0 0 1 135 390 H110 A10 10 0 0 1 100 380 V340 Z"
+                                        fill="url(#bodyGrad)" />
+                                    <path d="M100 340 H145 V350 H100 Z" fill="white" opacity="0.3" />
+
+                                    <path d="M155 340 H200 V380 A10 10 0 0 1 190 390 H165 A10 10 0 0 1 155 380 V340 Z"
+                                        fill="url(#bodyGrad)" />
+                                    <path d="M155 340 H200 V350 H155 Z" fill="white" opacity="0.3" />
+
+                                    <!-- Logical Drop Zone for Legs -->
+                                    <rect class="drop-target" data-target="legs" x="90" y="300" width="120" height="100"
+                                        fill="transparent" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Completion Screen -->
+        <section id="completion" class="screen hidden completion-new">
+            <div class="celebration-bg"></div>
+
+            <div class="robot-popup-container">
+                <div class="spark spark-1">✨</div>
+                <div class="spark spark-2">💫</div>
+                <div class="spark spark-3">⭐</div>
+
+                <div class="robot-active-wrapper">
+                    <svg class="robot-winking-svg" width="160" height="200" viewBox="0 0 300 400" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bodyGradWin" x1="150" y1="50" x2="150" y2="400"
+                                gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#ee3c4d" />
+                                <stop offset="1" stop-color="#C41C30" />
+                            </linearGradient>
+                            <linearGradient id="screenGradWin" x1="150" y1="75" x2="150" y2="155"
+                                gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#481368" />
+                                <stop offset="1" stop-color="#2D0F41" />
+                            </linearGradient>
+                            <linearGradient id="goldGradWin" x1="0" y1="0" x2="0" y2="1" objectBoundingBox="true">
+                                <stop offset="0" stop-color="#FFD700" />
+                                <stop offset="1" stop-color="#FFB800" />
+                            </linearGradient>
+                        </defs>
+                        <!-- LEGS -->
+                        <g id="legsWin">
+                            <rect x="110" y="300" width="25" height="40" rx="5" fill="#900C1C" />
+                            <rect x="165" y="300" width="25" height="40" rx="5" fill="#900C1C" />
+                            <path d="M100 340 H145 V380 A10 10 0 0 1 135 390 H110 A10 10 0 0 1 100 380 V340 Z"
+                                fill="url(#bodyGradWin)" />
+                            <path d="M100 340 H145 V350 H100 Z" fill="white" opacity="0.3" />
+                            <path d="M155 340 H200 V380 A10 10 0 0 1 190 390 H165 A10 10 0 0 1 155 380 V340 Z"
+                                fill="url(#bodyGradWin)" />
+                            <path d="M155 340 H200 V350 H155 Z" fill="white" opacity="0.3" />
+                        </g>
+                        <!-- BODY -->
+                        <g id="bodyWin">
+                            <rect x="125" y="180" width="50" height="20" fill="#2D0F41" />
+                            <path d="M85 200 H215 L205 290 H95 L85 200 Z" fill="url(#bodyGradWin)" />
+                            <path d="M75 200 Q85 190 100 200 V230 H75 V200 Z" fill="#900C1C" />
+                            <path d="M225 200 Q215 190 200 200 V230 H225 V200 Z" fill="#900C1C" />
+                            <rect x="110" y="215" width="80" height="50" rx="8" fill="#FF478D" stroke="#D4145A"
+                                stroke-width="3" />
+                            <path d="M112 217 H188 V237 H112 V217 Z" fill="white" opacity="0.2" />
+                            <circle cx="130" cy="240" r="6" fill="white" />
+                            <circle cx="150" cy="240" r="6" fill="white" />
+                            <circle cx="170" cy="240" r="6" fill="white" />
+                            <path d="M100 290 H200 L190 310 H110 L100 290 Z" fill="#2D0F41" />
+                        </g>
+                        <!-- ARMS -->
+                        <g id="armsWin">
+                            <path d="M85 215 Q40 180 30 130" stroke="#2D0F41" stroke-width="18"
+                                stroke-linecap="round" />
+                            <circle cx="30" cy="130" r="18" fill="url(#goldGradWin)" />
+                            <path d="M215 215 Q260 180 270 130" stroke="#2D0F41" stroke-width="18"
+                                stroke-linecap="round" />
+                            <circle cx="270" cy="130" r="18" fill="url(#goldGradWin)" />
+                        </g>
+                        <!-- HEAD -->
+                        <g id="headWin">
+                            <rect x="135" y="30" width="30" height="25" fill="#A01020" />
+                            <rect x="75" y="50" width="150" height="130" rx="25" fill="url(#bodyGradWin)" />
+                            <path d="M75 155 Q150 160 225 155 L225 160 Q150 170 75 160 Z" fill="#900C1C"
+                                opacity="0.5" />
+                            <path d="M77 170 Q75 170 75 168 V70 Q75 52 93 52 H207 Q223 52 225 68" stroke="white"
+                                stroke-width="4" stroke-opacity="0.3" fill="none" />
+                            <circle cx="60" cy="115" r="18" fill="url(#goldGradWin)" />
+                            <circle cx="60" cy="115" r="12" fill="none" stroke="#F5A623" stroke-width="2" />
+                            <rect x="70" y="110" width="10" height="10" fill="#900C1C" />
+                            <circle cx="240" cy="115" r="18" fill="url(#goldGradWin)" />
+                            <circle cx="240" cy="115" r="12" fill="none" stroke="#F5A623" stroke-width="2" />
+                            <rect x="220" y="110" width="10" height="10" fill="#900C1C" />
+                            <rect x="90" y="70" width="120" height="90" rx="15" fill="black" stroke="#3A1550"
+                                stroke-width="4" />
+                            <rect x="92" y="72" width="116" height="86" rx="13" fill="url(#screenGradWin)" />
+                            <path d="M95 75 H150 L130 110 H95 V75 Z" fill="white" opacity="0.1" />
+                            <!-- Normal Left Eye -->
+                            <rect x="115" y="95" width="18" height="28" rx="6" fill="#00FF94" />
+                            <!-- Winking Right Eye -->
+                            <path d="M165 110 Q175 100 185 110" stroke="#00FF94" stroke-width="6" stroke-linecap="round"
+                                fill="none" />
+                            <!-- Happy Mouth -->
+                            <path d="M120 135 Q150 155 180 135" stroke="#00FF94" stroke-width="6" stroke-linecap="round"
+                                fill="none" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <h2 class="congrats-title">Tahniah! Robot anda berjaya diaktifkan <span class="emoji-bounce">🤖</span><span
+                    class="emoji-sparkle">✨</span></h2>
+
+            <div class="benefits-card">
+                <div class="benefit-item">
+                    <span class="check-icon">✔</span>
+                    <p>Skill AI telah dikemas kini dalam profil anda</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="check-icon">✔</span>
+                    <p>Nama anda sudah masuk cabutan bertuah</p>
+                </div>
+            </div>
+
+            <div class="upsell-box">
+                <p class="upsell-title">Ada lagi skill AI?</p>
+                <p class="upsell-desc">Aktifkan robot baharu untuk tambah peluang anda.</p>
+                <button id="replay-btn" class="cta-btnPrimary upsell-btn">Nak Tambah skill AI</button>
+            </div>
+
+            <div class="community-box">
+                <p>Sertai WhatsApp Group kami untuk update campaign terkini!</p>
+                <a href="https://whatsapp.com/channel/0029VaydHNyCxoB1oPekql1n" target="_blank" id="whatsapp-btn"
+                    class="btn-whatsapp">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                    </svg>
+                    WhatsApp Channel
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

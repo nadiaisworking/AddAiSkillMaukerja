@@ -1,0 +1,106 @@
+<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wallGrad" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9575CD"/> <!-- Left Wall Light -->
+      <stop offset="0.4" stop-color="#7E57C2"/> <!-- Corner Shadow -->
+      <stop offset="1" stop-color="#673AB7"/> <!-- Right Wall Dark -->
+    </linearGradient>
+    <linearGradient id="floorGrad" x1="0" y1="500" x2="0" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFB74D"/>
+      <stop offset="1" stop-color="#FB8C00"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- ROOM SHELL -->
+  <!-- Ceiling -->
+  <rect x="0" y="0" width="400" height="150" fill="#E1BEE7" opacity="0.3"/>
+  <path d="M0 50 H400 M0 100 H400 M100 0 V150 M200 0 V150 M300 0 V150" stroke="#BA68C8" stroke-width="1" opacity="0.5"/> <!-- Ceiling Tiles -->
+  
+  <!-- Walls -->
+  <rect x="0" y="150" width="400" height="450" fill="url(#wallGrad)"/>
+  <path d="M0 150 L400 150" stroke="#7E57C2" stroke-width="5"/> <!-- Cornice -->
+
+  <!-- Floor -->
+  <rect x="0" y="600" width="400" height="200" fill="url(#floorGrad)"/>
+  
+  <!-- SUNLIGHT & SHADOWS (Crucial Detail) -->
+  <path d="M0 600 L180 800 H400 L400 600 Z" fill="#FFECB3" opacity="0.3"/> <!-- Main Floor Light -->
+  <path d="M-50 200 L150 800 L0 800 Z" fill="#FFECB3" opacity="0.2"/> <!-- Wall Light Beam -->
+
+  <!-- WINDOW (Left Wall) -->
+  <rect x="-20" y="200" width="80" height="300" fill="#FFF9C4" stroke="white" stroke-width="5"/>
+  <path d="M-20 280 H60 M-20 360 H60 M-20 440 H60" stroke="#FFD54F" stroke-width="2"/> <!-- Panes -->
+
+  <!-- RED BOOKSHELF (Right Wall) -->
+  <rect x="300" y="250" width="100" height="350" fill="#D32F2F" filter="url(#shadow)"/>
+  <rect x="300" y="250" width="100" height="10" fill="#B71C1C"/> <!-- Top -->
+  <rect x="300" y="320" width="100" height="5" fill="#B71C1C"/>
+  <rect x="300" y="400" width="100" height="5" fill="#B71C1C"/>
+  <rect x="300" y="480" width="100" height="5" fill="#B71C1C"/>
+  <rect x="300" y="550" width="100" height="5" fill="#B71C1C"/>
+  
+  <!-- Bookshelf Items -->
+  <rect x="310" y="270" width="15" height="40" fill="#FFEB3B"/> <!-- Yellow Book -->
+  <rect x="330" y="260" width="10" height="50" fill="#2196F3"/> <!-- Blue Book -->
+  <path d="M360 380 L350 350 L370 350 Z" fill="#4CAF50"/> <!-- Plant -->
+  <rect x="355" y="380" width="10" height="10" fill="#795548"/>
+  <rect x="310" y="420" width="20" height="60" fill="#009688"/> <!-- Green Binder -->
+  <rect x="340" y="420" width="20" height="60" fill="#009688"/> <!-- Green Binder -->
+
+  <!-- CORKBOARD (Back Wall) -->
+  <rect x="80" y="250" width="180" height="120" fill="#FFE0B2" stroke="#FF7043" stroke-width="5" filter="url(#shadow)"/>
+  <rect x="100" y="270" width="30" height="30" fill="#F06292" transform="rotate(-5)"/> <!-- Pink Note -->
+  <rect x="150" y="280" width="30" height="30" fill="#4FC3F7" transform="rotate(2)"/> <!-- Blue Note -->
+  <rect x="200" y="290" width="30" height="30" fill="#FFF176" transform="rotate(-3)"/> <!-- Yellow Note -->
+
+  <!-- CLOCK (Top Right) -->
+  <circle cx="340" cy="180" r="25" fill="white" stroke="#D32F2F" stroke-width="4" filter="url(#shadow)"/>
+  <path d="M340 180 V165 M340 180 H355" stroke="#333" stroke-width="2"/> <!-- Hands -->
+  <path d="M340 150 V155 M340 210 V205 M310 180 H315 M370 180 H365" stroke="#D32F2F" stroke-width="2"/> <!-- Ticks -->
+
+  <!-- DESK AREA -->
+  <!-- Red Cabinet (Left Under Desk) -->
+  <rect x="50" y="500" width="80" height="100" fill="#D32F2F" filter="url(#shadow)"/>
+  <rect x="55" y="510" width="70" height="25" fill="#B71C1C"/> <!-- Drawer 1 -->
+  <circle cx="90" cy="522" r="3" fill="#D32F2F"/>
+  <rect x="55" y="540" width="70" height="25" fill="#B71C1C"/> <!-- Drawer 2 -->
+  <circle cx="90" cy="552" r="3" fill="#D32F2F"/>
+  <rect x="55" y="570" width="70" height="25" fill="#B71C1C"/> <!-- Drawer 3 -->
+  
+  <!-- Desk Top -->
+  <rect x="40" y="480" width="240" height="20" fill="#FF8A65"/> 
+  <rect x="260" y="500" width="15" height="100" fill="#D84315"/> <!-- Right Leg -->
+  <rect x="120" y="500" width="140" height="5" fill="#D84315" opacity="0.3"/> <!-- Shadow under desk -->
+
+  <!-- Computer on Desk -->
+  <rect x="130" y="400" width="100" height="65" fill="#E3F2FD" stroke="#37474F" stroke-width="4"/> <!-- Monitor -->
+  <path d="M130 465 L180 430 H230" fill="white" opacity="0.3"/> <!-- Reflection -->
+  <rect x="170" y="465" width="20" height="15" fill="#37474F"/> <!-- Stand -->
+  <rect x="160" y="480" width="40" height="5" fill="#37474F"/> <!-- Base -->
+  <rect x="140" y="485" width="80" height="2" fill="#37474F"/> <!-- Keyboard approx -->
+
+  <!-- Orange Chair -->
+  <g filter="url(#shadow)">
+    <path d="M190 600 L190 550" stroke="#37474F" stroke-width="5"/> <!-- Center Post -->
+    <path d="M190 600 L160 620 M190 600 L220 620" stroke="#37474F" stroke-width="5"/> <!-- Base Legs -->
+    <path d="M170 530 Q160 550 190 550 Q220 550 210 530 Z" fill="#FF9800"/> <!-- Seat -->
+    <path d="M175 460 Q170 530 190 530 Q210 530 205 460 Q190 450 175 460 Z" fill="#FF9800"/> <!-- Backrest High -->
+    <rect x="180" y="460" width="20" height="50" fill="#FB8C00" opacity="0.3"/> <!-- Detail -->
+  </g>
+
+  <!-- Potted Plant (Left Corner) -->
+  <path d="M20 500 L10 580 L50 580 L40 500 Z" fill="white"/> <!-- Pot -->
+  <path d="M30 500 Q10 400 0 450" stroke="#4CAF50" stroke-width="6" fill="none"/>
+  <path d="M30 500 Q50 350 70 420" stroke="#66BB6A" stroke-width="6" fill="none"/>
+  <path d="M30 500 Q10 380 30 350" stroke="#81C784" stroke-width="6" fill="none"/>
+
+  <!-- CEILING LIGHT (Red Linear) -->
+  <rect x="120" y="50" width="200" height="20" fill="#D32F2F"/>
+  <rect x="120" y="70" width="200" height="5" fill="#FFEB3B"/> <!-- Light Emitting -->
+  <rect x="150" y="0" width="2" height="50" fill="#424242"/> <!-- Wire 1 -->
+  <rect x="290" y="0" width="2" height="50" fill="#424242"/> <!-- Wire 2 -->
+
+</svg>

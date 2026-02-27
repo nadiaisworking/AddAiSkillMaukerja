@@ -1,0 +1,52 @@
+<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E3F2FD"/>
+      <stop offset="1" stop-color="#BBDEFB"/>
+    </linearGradient>
+    <linearGradient id="floorGrad" x1="0" y1="400" x2="0" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#CFD8DC"/>
+      <stop offset="1" stop-color="#ECEFF1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- CEILING & FLOOR -->
+  <rect x="0" y="0" width="400" height="400" fill="#F5F5F5"/> <!-- Ceiling -->
+  <rect x="0" y="400" width="400" height="400" fill="url(#floorGrad)"/> <!-- Floor -->
+  
+  <!-- BACK WALL & WINDOWS -->
+  <rect x="0" y="100" width="400" height="300" fill="#FFECB3"/> <!-- Wall -->
+  
+  <!-- Large Windows with City View -->
+  <rect x="20" y="120" width="100" height="180" fill="url(#skyGrad)" stroke="#B0BEC5" stroke-width="4"/>
+  <rect x="140" y="120" width="120" height="180" fill="url(#skyGrad)" stroke="#B0BEC5" stroke-width="4"/>
+  <rect x="280" y="120" width="100" height="180" fill="url(#skyGrad)" stroke="#B0BEC5" stroke-width="4"/>
+  
+  <!-- City Silhouettes -->
+  <path d="M30 300 V250 H50 V200 H70 V300 Z" fill="#90A4AE" opacity="0.5"/>
+  <path d="M150 300 V230 H180 V260 H200 V300 Z" fill="#90A4AE" opacity="0.5"/>
+
+  <!-- OFFICE FURNITURE (Perspective) -->
+  
+  <!-- Back Desk Row -->
+  <path d="M40 350 L100 350 L110 400 L30 400 Z" fill="#FF7043"/> <!-- Desk 1 -->
+  <rect x="50" y="320" width="40" height="30" fill="#546E7A"/> <!-- Monitor 1 -->
+  
+  <path d="M290 350 L350 350 L360 400 L280 400 Z" fill="#FF7043"/> <!-- Desk 2 -->
+  <rect x="300" y="320" width="40" height="30" fill="#546E7A"/> <!-- Monitor 2 -->
+
+  <!-- Plants -->
+  <g transform="translate(350, 450)">
+    <path d="M0 0 L-10 -40 L10 -40 Z" fill="#00B894"/>
+    <path d="M0 0 L-20 -30 L0 -20 Z" fill="#00B894"/>
+    <path d="M0 0 L20 -30 L0 -20 Z" fill="#00B894"/>
+    <ellipse cx="0" cy="0" rx="15" ry="10" fill="#636E72"/>
+  </g>
+
+  <!-- Foreground Elements (blurred/subtle) -->
+  <rect x="0" y="780" width="400" height="20" fill="#2D3436" opacity="0.1"/>
+  
+  <!-- Lighting -->
+  <path d="M140 120 L260 120 L300 400 L100 400 Z" fill="white" opacity="0.1"/> <!-- Light shaft -->
+
+</svg>

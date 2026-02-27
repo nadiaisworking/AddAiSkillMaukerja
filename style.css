@@ -1,0 +1,915 @@
+:root {
+    /* Gamer Pop Palette */
+    --primary-red: #ee3c4d;
+    /* User specified */
+    --pop-pink: #FF478D;
+    /* Hot Pink from reference */
+    --pop-purple: #2A0944;
+    /* Deep Purple BG */
+    --pop-orange: #FFB800;
+    /* Sunny Orange */
+    --pop-yellow: #FFF5CC;
+    /* Pale Yellow */
+    --surface-white: #FFFFFF;
+
+    /* Typography */
+    --font-bubbly: 'Fredoka One', cursive;
+    --font-ui: 'Fredoka', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--pop-purple);
+    color: #333;
+    font-family: var(--font-ui);
+    height: 100vh;
+    height: 100dvh;
+    /* Safari fix */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Dynamic Background */
+    background: url('assets/bg_user_upload.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Floating Decor Items */
+body::before,
+body::after {
+    content: '★';
+    position: absolute;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 4rem;
+    z-index: 0;
+    pointer-events: none;
+    animation: floating 6s ease-in-out infinite;
+}
+
+body::before {
+    top: 10%;
+    right: 10%;
+    transform: rotate(15deg);
+}
+
+body::after {
+    bottom: 10%;
+    left: 10%;
+    transform: rotate(-10deg);
+    color: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+#app {
+    width: 95%;
+    max-width: 900px;
+    height: 90vh;
+    max-height: 800px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#gameplay,
+#completion {
+    background: var(--surface-white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border: 4px solid var(--pop-yellow);
+}
+
+.screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    height: 100%;
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Header Section */
+#lobby header {
+    flex: 0 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+h1 {
+    font-family: var(--font-bubbly);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--pop-purple);
+    margin-bottom: 10px;
+
+    /* Soft stroke */
+    -webkit-text-stroke: 4px var(--surface-white);
+    paint-order: stroke fill;
+
+    /* Pop shadow */
+    filter: drop-shadow(3px 3px 0 var(--primary-red));
+}
+
+.mission-brief {
+    font-weight: 600;
+    color: var(--primary-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    background: var(--pop-yellow);
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transform: rotate(-2deg);
+}
+
+.prize-banner {
+    background: linear-gradient(135deg, #FFD54F, #FF9800);
+    color: #B71C1C;
+    font-family: var(--font-bubbly);
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 3px solid white;
+    box-shadow: 0 4px 0 #E65100;
+    margin-top: 15px;
+    display: inline-block;
+    align-self: center;
+    text-align: center;
+    animation: bounce 2s infinite alternate;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Robot Container */
+.robot-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.robot-base {
+    max-width: 100%;
+    max-height: 65vh;
+    object-fit: contain;
+    /* Clean vector drop shadow */
+    filter: drop-shadow(0 15px 0 rgba(0, 0, 0, 0.1));
+}
+
+/* Buttons */
+.cta-btnPrimary {
+    width: max-content;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 250px;
+    max-width: 100%;
+    background: var(--pop-pink);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 25px;
+    font-family: var(--font-bubbly);
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 8px 0 #D4145A;
+    transition: transform 0.1s, box-shadow 0.1s;
+    margin-bottom: 10px;
+}
+
+.cta-btnPrimary:active {
+    transform: translateY(8px);
+    box-shadow: 0 0 0 #D4145A;
+}
+
+/* Lobby Content Wrapper override */
+#lobby .content-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Gameplay Layout (70/30 Split) */
+.game-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+/* Left side 70% */
+.game-left {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
+    border-right: 2px dashed rgba(0, 0, 0, 0.1);
+}
+
+.instruction-main {
+    font-size: 1.4rem;
+    font-family: var(--font-bubbly);
+    color: var(--primary-red);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.drag-box {
+    background: var(--surface-white);
+    border: 3px solid #E0E0E0;
+    border-radius: 15px;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.instruction-sub {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Draggable Tokens Area */
+.tokens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    overflow-y: auto;
+    /* Clean scrollbar */
+    padding-right: 5px;
+}
+
+.tokens::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tokens::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Draggable Items */
+.token {
+    background: var(--pop-purple);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: grab;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 0 #1A052A;
+    transition: transform 0.1s, box-shadow 0.1s;
+    user-select: none;
+}
+
+.token:active {
+    cursor: grabbing;
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #1A052A;
+}
+
+/* Styling dynamic token colors based on category later via JS or classes */
+.token.cat-writing {
+    background: #E91E63;
+    box-shadow: 0 4px 0 #880E4F;
+}
+
+.token.cat-design {
+    background: #9C27B0;
+    box-shadow: 0 4px 0 #4A148C;
+}
+
+.token.cat-video {
+    background: #2196F3;
+    box-shadow: 0 4px 0 #0D47A1;
+}
+
+.token.cat-office {
+    background: #4CAF50;
+    box-shadow: 0 4px 0 #1B5E20;
+}
+
+.token.cat-data {
+    background: #FF9800;
+    box-shadow: 0 4px 0 #E65100;
+}
+
+.token.cat-tech {
+    background: #607D8B;
+    box-shadow: 0 4px 0 #263238;
+}
+
+/* Right side 30% */
+.game-right {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+}
+
+.robot-stage-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.robot {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#robot-svg {
+    max-height: 100%;
+    width: auto;
+}
+
+/* Robot SVG States */
+.robot-part {
+    filter: grayscale(1) opacity(0.5);
+    transition: filter 0.5s ease-in-out;
+}
+
+.robot-part.active {
+    filter: grayscale(0) opacity(1);
+}
+
+.drop-target {
+    cursor: crosshair;
+}
+
+.drop-target.highlight {
+    fill: rgba(255, 255, 255, 0.3);
+}
+
+/* Modals & Overlays */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(42, 9, 68, 0.9);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal {
+    background: var(--surface-white);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 85%;
+    max-width: 400px;
+    border: 4px solid var(--pop-yellow);
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+    color: var(--primary-red);
+    font-family: var(--font-bubbly);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.modal p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.btn-secondary {
+    background: var(--pop-orange);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 20px;
+    font-family: var(--font-bubbly);
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #E65100;
+    transition: transform 0.1s, box-shadow 0.1s;
+    width: 100%;
+}
+
+.btn-secondary:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 #E65100;
+}
+
+/* =========================================
+   New Completion Screen Styles
+   ========================================= */
+
+.completion-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px !important;
+    position: relative;
+    overflow-y: auto;
+}
+
+.celebration-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(255, 184, 0, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 0;
+}
+
+.robot-popup-container {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20px;
+    animation: popupBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popupBounce {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.robot-winking-svg {
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.2));
+}
+
+.spark {
+    position: absolute;
+    animation: sparkTwinkle 1.5s infinite alternate;
+}
+
+.spark-1 {
+    top: 10%;
+    left: -10%;
+    font-size: 2.5rem;
+    animation-delay: 0s;
+}
+
+.spark-2 {
+    top: 40%;
+    right: -15%;
+    font-size: 3rem;
+    animation-delay: 0.3s;
+}
+
+.spark-3 {
+    bottom: 20%;
+    left: -20%;
+    font-size: 2rem;
+    animation-delay: 0.6s;
+}
+
+@keyframes sparkTwinkle {
+    0% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.2) rotate(20deg);
+        opacity: 1;
+    }
+}
+
+.congrats-title {
+    font-size: 1.8rem;
+    font-family: var(--font-bubbly);
+    color: var(--primary-red);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    -webkit-text-stroke: 1.5px var(--surface-white);
+    paint-order: stroke fill;
+    filter: drop-shadow(2px 2px 0px rgba(238, 60, 77, 0.2));
+}
+
+.emoji-bounce {
+    display: inline-block;
+    animation: bounceEmoji 2s infinite ease-in-out;
+}
+
+.emoji-sparkle {
+    display: inline-block;
+    animation: rotateSparkle 3s infinite linear;
+}
+
+@keyframes bounceEmoji {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes rotateSparkle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.benefits-card {
+    background: #FFF9E6;
+    border: 2px solid var(--pop-yellow);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+    z-index: 2;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.benefit-item:last-child {
+    margin-bottom: 0;
+}
+
+.check-icon {
+    font-family: var(--font-bubbly);
+    background: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.upsell-box {
+    margin-bottom: 25px;
+    z-index: 2;
+}
+
+.upsell-title {
+    font-family: var(--font-bubbly);
+    font-size: 1.4rem;
+    color: var(--pop-purple);
+    margin-bottom: 5px;
+}
+
+.upsell-desc {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.upsell-btn {
+    min-width: 200px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.community-box {
+    border-top: 2px dashed #E0E0E0;
+    padding-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    z-index: 2;
+}
+
+.community-box p {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-family: var(--font-bubbly);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 0 #128C7E;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-whatsapp:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #128C7E;
+}
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   Mobile Responsiveness (Max Width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    body {
+        /* Prevent bounce scrolling on mobile */
+        overscroll-behavior-y: none;
+    }
+
+    #app {
+        width: 94%;
+        height: 96vh;
+        height: 96dvh;
+        /* Safari fix */
+        max-height: none;
+    }
+
+    #gameplay,
+    #completion {
+        border-radius: 15px;
+        border: 4px solid var(--pop-yellow);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .screen {
+        padding: 15px 10px;
+    }
+
+    /* Lobby tweaks */
+    #lobby header {
+        padding-top: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .prize-banner {
+        font-size: 1rem;
+        padding: 8px 15px;
+        margin-top: 10px;
+    }
+
+    .robot-base {
+        max-height: 55vh;
+        /* give more room for buttons to not push off screen */
+    }
+
+    .cta-btnPrimary {
+        padding: 15px;
+        font-size: 1.2rem;
+        border-radius: 20px;
+    }
+
+    /* Gameplay Screen Layout */
+    .game-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .game-left {
+        flex: none;
+        width: 100%;
+        border-right: none;
+        padding-right: 0;
+    }
+
+    .game-right {
+        flex: 1;
+        /* Takes up remaining height */
+        width: 100%;
+        min-height: 250px;
+        /* Ensure robot has enough height */
+    }
+
+    .instruction-main {
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .drag-box {
+        padding: 12px;
+        border-radius: 10px;
+        border-width: 2px;
+        /* allow drag box to hold tokens properly without scrolling if possible */
+    }
+
+    .instruction-sub {
+        font-size: 0.95rem;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    /* Make tokens smaller and wrap compactly */
+    .tokens {
+        justify-content: center;
+        align-content: flex-start;
+        gap: 8px;
+        overflow-y: visible;
+        /* Prevent internal scroll */
+    }
+
+    .token {
+        flex: 1 1 45%;
+        /* Force 2 per row */
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+        box-shadow: 0 3px 0 #1A052A;
+        border-width: 1px;
+    }
+
+    .token:active {
+        box-shadow: 0 0 0 #1A052A;
+        transform: translateY(3px);
+    }
+
+    /* Tutorial Modal */
+    .modal {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .modal h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .btn-secondary {
+        padding: 12px 20px;
+        font-size: 1.1rem;
+    }
+
+    /* Mobile styles for new completion screen */
+    .congrats-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        -webkit-text-stroke: 1px var(--surface-white);
+    }
+
+    .robot-winking-svg {
+        height: 160px;
+        width: auto;
+    }
+
+    .benefits-card {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .benefit-item {
+        font-size: 0.95rem;
+    }
+
+    .upsell-title {
+        font-size: 1.2rem;
+    }
+
+    .upsell-btn {
+        padding: 12px 20px;
+        font-size: 1.1rem;
+        min-width: 160px;
+    }
+}
+
+/* =========================================
+   Desktop View Enhancements (Min Width: 769px)
+   Ensure Completion screen fits without scrolling
+   ========================================= */
+@media (min-width: 769px) {
+    .completion-new {
+        padding: 2vh 20px !important;
+        justify-content: center;
+        overflow-y: hidden;
+    }
+
+    .robot-popup-container {
+        margin-bottom: 2vh;
+    }
+
+    .robot-winking-svg {
+        height: min(22vh, 200px);
+        width: auto;
+    }
+
+    .congrats-title {
+        font-size: clamp(1.4rem, 3vh, 1.8rem);
+        margin-bottom: 2vh;
+    }
+
+    .benefits-card {
+        padding: 1.5vh 20px;
+        margin-bottom: 2vh;
+    }
+
+    .benefit-item {
+        margin-bottom: 1vh;
+    }
+
+    .upsell-box {
+        margin-bottom: 2vh;
+    }
+
+    .upsell-title {
+        margin-bottom: 0.5vh;
+    }
+
+    .upsell-desc {
+        margin-bottom: 1.5vh;
+    }
+
+    .upsell-btn {
+        padding: 1.5vh 30px;
+        margin-bottom: 0;
+    }
+
+    .community-box {
+        padding-top: 2vh;
+    }
+
+    .community-box p {
+        margin-bottom: 1.5vh;
+    }
+}

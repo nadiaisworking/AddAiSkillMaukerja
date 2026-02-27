@@ -1,0 +1,119 @@
+<svg width="300" height="400" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Rich Red Gradient -->
+    <linearGradient id="bodyGrad" x1="150" y1="50" x2="150" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ee3c4d"/>
+      <stop offset="1" stop-color="#C41C30"/>
+    </linearGradient>
+    <!-- Glass Screen Gradient -->
+    <linearGradient id="screenGrad" x1="150" y1="75" x2="150" y2="155" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#481368"/>
+      <stop offset="1" stop-color="#2D0F41"/>
+    </linearGradient>
+    <!-- Gold Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1" objectBoundingBox="true">
+      <stop offset="0" stop-color="#FFD700"/>
+      <stop offset="1" stop-color="#FFB800"/>
+    </linearGradient>
+    <!-- Gloss Highlight -->
+    <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1" objectBoundingBox="true">
+      <stop offset="0" stop-color="white" stop-opacity="0.4"/>
+      <stop offset="0.5" stop-color="white" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- HEAD GROUP -->
+  <g id="head">
+    <!-- Antenna connector -->
+    <rect x="135" y="30" width="30" height="25" fill="#A01020"/>
+    
+    <!-- Main Head Shape -->
+    <rect x="75" y="50" width="150" height="130" rx="25" fill="url(#bodyGrad)"/>
+    <!-- Head Shadow inset -->
+    <path d="M75 155 Q150 160 225 155 L225 160 Q150 170 75 160 Z" fill="#900C1C" opacity="0.5"/>
+    <!-- Head Rim Light -->
+    <path d="M77 170 Q75 170 75 168 V70 Q75 52 93 52 H207 Q223 52 225 68" stroke="white" stroke-width="4" stroke-opacity="0.3" fill="none"/>
+    
+    <!-- Ears -->
+    <g>
+       <circle cx="60" cy="115" r="18" fill="url(#goldGrad)"/>
+       <circle cx="60" cy="115" r="12" fill="none" stroke="#F5A623" stroke-width="2"/>
+       <!-- Connection rod -->
+       <rect x="70" y="110" width="10" height="10" fill="#900C1C"/>
+    </g>
+    <g>
+       <circle cx="240" cy="115" r="18" fill="url(#goldGrad)"/>
+       <circle cx="240" cy="115" r="12" fill="none" stroke="#F5A623" stroke-width="2"/>
+       <!-- Connection rod -->
+       <rect x="220" y="110" width="10" height="10" fill="#900C1C"/>
+    </g>
+
+    <!-- Face Screen -->
+    <rect x="90" y="70" width="120" height="90" rx="15" fill="black" stroke="#3A1550" stroke-width="4"/>
+    <rect x="92" y="72" width="116" height="86" rx="13" fill="url(#screenGrad)"/>
+    
+    <!-- Screen Reflection -->
+    <path d="M95 75 H150 L130 110 H95 V75 Z" fill="white" opacity="0.1"/>
+
+    <!-- Eyes -->
+    <rect x="115" y="95" width="18" height="28" rx="6" fill="#00FF94">
+        <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="167" y="95" width="18" height="28" rx="6" fill="#00FF94">
+        <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Mouth -->
+    <path d="M125 140 Q150 155 175 140" stroke="white" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- BODY GROUP -->
+  <g id="body">
+    <!-- Neck -->
+    <rect x="125" y="180" width="50" height="20" fill="#2D0F41"/>
+    
+    <!-- Torso -->
+    <path d="M85 200 H215 L205 290 H95 L85 200 Z" fill="url(#bodyGrad)"/>
+    <!-- Shoulder Armor -->
+    <path d="M75 200 Q85 190 100 200 V230 H75 V200 Z" fill="#900C1C"/>
+    <path d="M225 200 Q215 190 200 200 V230 H225 V200 Z" fill="#900C1C"/>
+    
+    <!-- Chest Plate / Panel -->
+    <rect x="110" y="215" width="80" height="50" rx="8" fill="#FF478D" stroke="#D4145A" stroke-width="3"/>
+    <!-- Panel gloss -->
+    <path d="M112 217 H188 V237 H112 V217 Z" fill="white" opacity="0.2"/>
+    <!-- Buttons -->
+    <circle cx="130" cy="240" r="6" fill="white"/>
+    <circle cx="150" cy="240" r="6" fill="white"/>
+    <circle cx="170" cy="240" r="6" fill="white"/>
+
+    <!-- Waist -->
+    <path d="M100 290 H200 L190 310 H110 L100 290 Z" fill="#2D0F41"/>
+  </g>
+
+  <!-- ARMS -->
+  <g id="arms">
+    <!-- Left Arm -->
+    <path d="M85 215 Q50 240 60 270" stroke="#2D0F41" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="60" cy="275" r="18" fill="url(#goldGrad)"/>
+    
+    <!-- Right Arm -->
+    <path d="M215 215 Q250 240 240 270" stroke="#2D0F41" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="240" cy="275" r="18" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- LEGS -->
+  <g id="legs">
+    <!-- Thighs -->
+    <rect x="110" y="300" width="25" height="40" rx="5" fill="#900C1C"/>
+    <rect x="165" y="300" width="25" height="40" rx="5" fill="#900C1C"/>
+    
+    <!-- Boots -->
+    <path d="M100 340 H145 V380 A10 10 0 0 1 135 390 H110 A10 10 0 0 1 100 380 V340 Z" fill="url(#bodyGrad)"/>
+    <path d="M100 340 H145 V350 H100 Z" fill="white" opacity="0.3"/> <!-- Boot Highlight -->
+    
+    <path d="M155 340 H200 V380 A10 10 0 0 1 190 390 H165 A10 10 0 0 1 155 380 V340 Z" fill="url(#bodyGrad)"/>
+    <path d="M155 340 H200 V350 H155 Z" fill="white" opacity="0.3"/> <!-- Boot Highlight -->
+  </g>
+</svg>

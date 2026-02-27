@@ -1,0 +1,85 @@
+<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wallGrad" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9575CD"/> <!-- Medium Purple -->
+      <stop offset="0.5" stop-color="#B39DDB"/> <!-- Light Purple -->
+      <stop offset="1" stop-color="#7E57C2"/> <!-- Darker Purple -->
+    </linearGradient>
+    <linearGradient id="floorGrad" x1="0" y1="500" x2="0" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFCC80"/> <!-- Light Wood -->
+      <stop offset="1" stop-color="#EF6C00"/> <!-- Dark Wood -->
+    </linearGradient>
+    <filter id="softShadow">
+       <feDropShadow dx="2" dy="2" stdDeviation="1" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- WALLS & CEILING -->
+  <rect x="0" y="0" width="400" height="600" fill="url(#wallGrad)"/>
+  <path d="M0 0 L50 50 L350 50 L400 0" fill="#673AB7" opacity="0.3"/> <!-- Ceiling Depth -->
+  
+  <!-- FLOOR -->
+  <rect x="0" y="600" width="400" height="200" fill="url(#floorGrad)"/>
+  <!-- Floor Planks -->
+  <path d="M0 650 H400 M0 700 H400 M0 750 H400" stroke="#E65100" stroke-width="1" opacity="0.5"/>
+  
+  <!-- LIGHTING (Sunlight from Left Window) -->
+  <path d="M0 600 L150 800 H400 L250 600 Z" fill="#FFECB3" opacity="0.4"/> <!-- Light Patch on Floor -->
+  
+  <!-- WINDOW (Left Wall partial) -->
+  <rect x="-20" y="150" width="60" height="400" fill="#FFF9C4" opacity="0.8"/>
+  <rect x="30" y="150" width="5" height="400" fill="#FFCA28"/> <!-- Frame -->
+
+  <!-- RED BOOKSHELF (Right) -->
+  <rect x="320" y="200" width="80" height="400" fill="#D32F2F" filter="url(#softShadow)"/>
+  <rect x="320" y="300" width="80" height="5" fill="#B71C1C"/> <!-- Shelf 1 -->
+  <rect x="320" y="400" width="80" height="5" fill="#B71C1C"/> <!-- Shelf 2 -->
+  <rect x="320" y="500" width="80" height="5" fill="#B71C1C"/> <!-- Shelf 3 -->
+  
+  <!-- Shelf Items -->
+  <rect x="330" y="250" width="10" height="50" fill="#FFEB3B"/>
+  <rect x="345" y="260" width="10" height="40" fill="#03A9F4"/>
+  <circle cx="370" cy="380" r="15" fill="#8BC34A"/> <!-- Plant Pot -->
+  
+  <!-- BOARD (Back Wall) -->
+  <rect x="120" y="200" width="160" height="100" fill="#FFF9C4" stroke="#FF7043" stroke-width="5" filter="url(#softShadow)"/>
+  <rect x="140" y="220" width="20" height="20" fill="#F06292"/> <!-- Post-it -->
+  <rect x="180" y="230" width="20" height="20" fill="#4FC3F7"/> <!-- Post-it -->
+  <rect x="230" y="250" width="20" height="20" fill="#FFF176"/> <!-- Post-it -->
+
+  <!-- DESK (Center) -->
+  <rect x="80" y="500" width="200" height="100" fill="#FF7043" filter="url(#softShadow)"/> <!-- Table Top -->
+  <rect x="85" y="510" width="10" height="90" fill="#E64A19"/> <!-- Leg L -->
+  <rect x="265" y="510" width="10" height="90" fill="#E64A19"/> <!-- Leg R -->
+  
+  <!-- Red Cabinet under desk (Left) -->
+  <rect x="50" y="520" width="60" height="80" fill="#C62828" filter="url(#softShadow)"/>
+  <rect x="55" y="530" width="50" height="20" fill="#B71C1C"/> <!-- Drawer 1 -->
+  <rect x="55" y="560" width="50" height="30" fill="#B71C1C"/> <!-- Drawer 2 -->
+
+  <!-- Computer -->
+  <rect x="130" y="440" width="80" height="50" fill="#E3F2FD" stroke="#455A64" stroke-width="3"/> <!-- Monitor -->
+  <rect x="160" y="490" width="20" height="10" fill="#455A64"/> <!-- Stand -->
+
+  <!-- CHAIR (Orange) -->
+  <path d="M200 600 L220 540 H260 L280 600" stroke="#455A64" stroke-width="4" fill="none"/> <!-- Legs -->
+  <path d="M210 500 Q200 550 220 580 H260 Q280 550 270 500 Z" fill="#FF9800"/> <!-- Seat -->
+  <rect x="220" y="450" width="40" height="60" rx="5" fill="#F57C00"/> <!-- Backrest -->
+
+  <!-- LIGHT (Hanging) -->
+  <rect x="150" y="0" width="5" height="100" fill="#424242"/> <!-- Cord -->
+  <rect x="100" y="100" width="200" height="10" fill="#D32F2F"/> <!-- Lamp Body -->
+  <rect x="105" y="110" width="190" height="5" fill="#FFEB3B" opacity="0.8"/> <!-- Light -->
+
+  <!-- TALL PLANT (Left) -->
+  <rect x="10" y="550" width="40" height="50" fill="#B0BEC5"/> <!-- Pot -->
+  <path d="M30 550 Q10 450 0 500" stroke="#66BB6A" stroke-width="8" fill="none"/>
+  <path d="M30 550 Q50 400 60 450" stroke="#81C784" stroke-width="8" fill="none"/>
+  <path d="M30 550 Q30 350 20 400" stroke="#4CAF50" stroke-width="8" fill="none"/>
+
+  <!-- CLOCK (Wall Right) -->
+  <circle cx="350" cy="100" r="20" fill="white" stroke="#C62828" stroke-width="3"/>
+  <path d="M350 100 V90" stroke="#333" stroke-width="2"/>
+  <path d="M350 100 H360" stroke="#333" stroke-width="2"/>
+
+</svg>

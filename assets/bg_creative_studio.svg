@@ -1,0 +1,100 @@
+<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wallGradient" x1="0" y1="0" x2="400" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF8E1"/> <!-- Creamy White -->
+      <stop offset="1" stop-color="#FFE0B2"/> <!-- Warm Orange Tint -->
+    </linearGradient>
+    <filter id="popShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="2" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="400" height="800" fill="url(#wallGradient)"/>
+  
+  <!-- ACCENT WALL (Geometric) -->
+  <path d="M0 0 H200 L150 800 H0 Z" fill="#FFECB3" opacity="0.5"/>
+  <circle cx="50" cy="100" r="150" fill="#FFCCBC" opacity="0.3"/>
+
+  <!-- FLOOR -->
+  <path d="M0 600 H400 V800 H0 Z" fill="#CFD8DC"/>
+  <rect y="600" width="400" height="10" fill="#B0BEC5"/> <!-- Baseboard -->
+
+  <!-- SHELF UNIT (Right) -->
+  <rect x="220" y="150" width="160" height="15" fill="#795548" rx="2" filter="url(#popShadow)"/> <!-- Top Shelf -->
+  <rect x="220" y="300" width="160" height="15" fill="#795548" rx="2" filter="url(#popShadow)"/> <!-- Bottom Shelf -->
+
+  <!-- REALISTIC ITEMS (On Shelves) -->
+  
+  <!-- Books (Top Shelf) -->
+  <g transform="translate(230, 95)" filter="url(#popShadow)">
+    <!-- Red Book -->
+    <path d="M0 55 H15 V5 H0 Z" fill="#D32F2F"/>
+    <path d="M2 55 V5" stroke="#B71C1C" stroke-width="2"/>
+    <!-- Blue Book Leaning -->
+    <path d="M18 55 L35 55 L45 5 L28 5 Z" fill="#1976D2"/>
+    <path d="M22 55 L32 5" stroke="#0D47A1" stroke-width="2"/>
+    <!-- Green Book -->
+    <path d="M48 55 H80 V15 H48 Z" fill="#388E3C"/>
+    <rect x="55" y="25" width="20" height="5" fill="white"/> <!-- Label -->
+  </g>
+
+  <!-- Plant (Top Shelf Right) -->
+  <g transform="translate(330, 100)" filter="url(#popShadow)">
+     <path d="M10 50 L30 50 L25 30 L15 30 Z" fill="#E64A19"/> <!-- Pot -->
+     <!-- Leaves -->
+     <path d="M20 30 Q10 10 0 20" stroke="#43A047" stroke-width="4" fill="none"/>
+     <path d="M20 30 Q30 0 40 10" stroke="#43A047" stroke-width="4" fill="none"/>
+     <path d="M20 30 Q20 5 20 0" stroke="#43A047" stroke-width="4" fill="none"/>
+     <circle cx="0" cy="20" r="5" fill="#43A047"/>
+     <circle cx="40" cy="10" r="5" fill="#43A047"/>
+     <circle cx="20" cy="0" r="5" fill="#66BB6A"/>
+  </g>
+
+  <!-- Camera (Bottom Shelf) -->
+  <g transform="translate(240, 260)" filter="url(#popShadow)">
+     <rect x="0" y="10" width="50" height="30" rx="4" fill="#607D8B"/>
+     <rect x="15" y="0" width="20" height="10" fill="#455A64"/>
+     <circle cx="25" cy="25" r="10" fill="#37474F" stroke="#263238" stroke-width="3"/>
+     <circle cx="25" cy="25" r="4" fill="#CFD8DC" opacity="0.5"/>
+  </g>
+  
+  <!-- Trophy (Bottom Shelf Right) -->
+  <g transform="translate(320, 245)" filter="url(#popShadow)">
+      <path d="M10 0 H30 L25 30 H15 Z" fill="#FFD700"/> <!-- Cup -->
+      <path d="M20 30 V45" stroke="#FFD700" stroke-width="4"/>
+      <rect x="10" y="45" width="20" height="5" fill="#FFA000"/> <!-- Base -->
+      <path d="M10 5 C0 5 0 15 10 15" stroke="#FFD700" stroke-width="3" fill="none"/> <!-- Handle L -->
+      <path d="M30 5 C40 5 40 15 30 15" stroke="#FFD700" stroke-width="3" fill="none"/> <!-- Handle R -->
+  </g>
+
+  <!-- DESK AREA (Bottom Left) -->
+  <g transform="translate(-20, 500)" filter="url(#popShadow)">
+      <rect x="0" y="50" width="200" height="150" fill="#F57C00" rx="5"/> <!-- Desk Top -->
+      <rect x="20" y="200" width="20" height="100" fill="#E65100"/> <!-- Leg -->
+      <rect x="150" y="200" width="20" height="100" fill="#E65100"/> <!-- Leg -->
+      
+      <!-- Laptop -->
+      <path d="M50 80 H140 L130 130 H60 Z" fill="#CFD8DC"/> <!-- Keyboard Base -->
+      <path d="M60 40 H130 V85 H60 Z" fill="#546E7A"/> <!-- Screen Case -->
+      <rect x="65" y="45" width="60" height="35" fill="#29B6F6"/> <!-- Screen -->
+      <circle cx="95" cy="62" r="5" fill="white" opacity="0.8"/> <!-- Logo -->
+      
+      <!-- Coffee Mug -->
+      <g transform="translate(150, 90)">
+          <path d="M0 0 H20 V25 A5 5 0 0 1 15 30 H5 A5 5 0 0 1 0 25 Z" fill="#D32F2F"/>
+          <path d="M20 5 H25 A3 3 0 0 1 25 15 H20" stroke="#D32F2F" stroke-width="3" fill="none"/>
+          <!-- Steam -->
+          <path d="M5 -10 Q10 -15 5 -20" stroke="#BDBDBD" stroke-width="2" opacity="0.6"/>
+          <path d="M15 -10 Q20 -15 15 -20" stroke="#BDBDBD" stroke-width="2" opacity="0.6"/>
+      </g>
+  </g>
+
+  <!-- DECOR (Hanging) -->
+  <g transform="translate(50, 50)" filter="url(#popShadow)">
+    <rect x="-5" y="0" width="10" height="80" fill="#424242"/> <!-- Cord -->
+    <path d="M-20 80 H20 L30 110 H-30 Z" fill="#424242"/> <!-- Shade Outside -->
+    <path d="M-15 110 H15 L5 130 H-5 Z" fill="#FFEB3B" opacity="0.8"/> <!-- Bulb Glow -->
+  </g>
+
+</svg>
