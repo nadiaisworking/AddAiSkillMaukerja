@@ -115,10 +115,27 @@ body::after {
 }
 
 /* Header Section */
+.brand-logo {
+    text-align: center;
+    /* Center the logo above the title */
+    padding-top: 20px;
+    margin-bottom: -5px;
+    /* Pull header closer to the logo */
+    z-index: 10;
+}
+
+.brand-logo img {
+    height: 35px;
+    /* Keep it small but visible */
+    width: auto;
+    object-fit: contain;
+}
+
 #lobby header {
     flex: 0 0 auto;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
+    /* adjusted due to logo */
 }
 
 h1 {
