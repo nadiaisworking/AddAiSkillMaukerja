@@ -195,6 +195,9 @@ h1 {
     object-fit: contain;
     /* Clean vector drop shadow */
     filter: drop-shadow(0 15px 0 rgba(0, 0, 0, 0.1));
+    /* Make robot larger */
+    transform: scale(1.3);
+    transform-origin: center center;
 }
 
 /* Buttons */
