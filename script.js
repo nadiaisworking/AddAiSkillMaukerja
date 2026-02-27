@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeTargetName = state.stage === 1 ? 'head' : (state.stage === 2 ? 'body' : 'legs');
         dropTargets.forEach(target => {
             if (target.dataset.target === activeTargetName) {
-                target.style.display = 'block';
+                target.style.display = ''; // Revert to default SVG display
                 target.style.pointerEvents = 'all';
             } else {
                 target.style.display = 'none';

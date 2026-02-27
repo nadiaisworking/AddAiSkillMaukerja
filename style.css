@@ -372,16 +372,22 @@ h1 {
 
 /* Robot SVG States */
 .robot-part {
-    filter: grayscale(1) opacity(0.5);
-    transition: filter 0.5s ease-in-out;
+    opacity: 0.5;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out, -webkit-filter 0.5s ease-in-out;
 }
 
 .robot-part.active {
-    filter: grayscale(0) opacity(1);
+    opacity: 1;
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
 }
 
 .drop-target {
     cursor: crosshair;
+    fill: rgba(255, 255, 255, 0.01) !important;
+    pointer-events: all !important;
 }
 
 .drop-target.highlight {
