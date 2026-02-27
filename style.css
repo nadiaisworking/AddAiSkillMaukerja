@@ -866,8 +866,9 @@ h1 {
    ========================================= */
 @media (min-width: 769px) {
     body {
-        background-size: 100% 100%;
-        background-attachment: scroll;
+        background-size: 100% auto;
+        background-position: center bottom;
+        background-attachment: fixed;
     }
 
     .completion-new {
