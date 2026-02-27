@@ -356,6 +356,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showEmailPopup() {
+        // Hide gameplay screen to remove the white box behind the popup
+        const gameplayScreen = document.getElementById('gameplay');
+        gameplayScreen.classList.remove('active');
+        gameplayScreen.classList.add('hidden');
+
         document.getElementById('email-overlay').classList.remove('hidden');
     }
 
