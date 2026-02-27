@@ -191,11 +191,14 @@ document.addEventListener('DOMContentLoaded', () => {
             token.addEventListener('touchstart', handleTouchStart, { passive: false });
             token.addEventListener('touchmove', handleTouchMove, { passive: false });
             token.addEventListener('touchend', handleTouchEnd);
+            token.addEventListener('touchcancel', handleTouchEnd);
 
             tokenContainer.appendChild(token);
         });
 
-        currentStageEl.innerText = state.stage;
+        if (currentStageEl) {
+            currentStageEl.innerText = state.stage;
+        }
         updateDropTargetsActiveState();
     }
 
@@ -256,6 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Visual feedback
         this.style.opacity = '0.5';
 
+        // Cleanup prev if any
+        if (touchClone && touchClone.parentNode) {
+            touchClone.parentNode.removeChild(touchClone);
+        }
+
         // Create visual clone
         touchClone = this.cloneNode(true);
         touchClone.style.position = 'absolute';
@@ -279,24 +287,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleTouchEnd(e) {
-        if (draggedItem) draggedItem.style.opacity = '1';
+        let targetName = null;
+        let droppedVal = draggedItem ? draggedItem.dataset.value : null;
 
         if (touchClone) {
-            // Find element under finger
-            const touch = e.changedTouches[0];
-            touchClone.style.display = 'none'; // hide temporarily to find element underneath
-            const elemBelow = document.elementFromPoint(touch.clientX, touch.clientY);
-            touchClone.style.display = 'block';
-
-            // Check if dropped on target
-            if (elemBelow && elemBelow.classList.contains('drop-target')) {
-                processDrop(elemBelow.dataset.target, draggedItem.dataset.value);
+            const touch = e.changedTouches ? e.changedTouches[0] : null;
+            if (touch) {
+                touchClone.style.display = 'none';
+                const elemBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+                if (elemBelow && elemBelow.classList.contains('drop-target')) {
+                    targetName = elemBelow.dataset.target;
+                }
             }
 
-            document.body.removeChild(touchClone);
+            if (touchClone.parentNode) {
+                touchClone.parentNode.removeChild(touchClone);
+            }
             touchClone = null;
         }
-        draggedItem = null;
+
+        if (draggedItem) {
+            draggedItem.style.opacity = '1';
+            draggedItem = null;
+        }
+
+        if (targetName && droppedVal) {
+            processDrop(targetName, droppedVal);
+        }
     }
 
 
