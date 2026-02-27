@@ -867,7 +867,7 @@ h1 {
 @media (min-width: 769px) {
     body {
         background-size: cover;
-        background-position: center bottom;
+        background-position: center center;
         background-attachment: fixed;
     }
 
