@@ -183,6 +183,8 @@ h1 {
     align-items: center;
     position: relative;
     min-height: 0;
+    margin-bottom: 56px;
+    /* ~1.5cm gap */
 }
 
 .robot-base {
