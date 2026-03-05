@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitEmailBtn.disabled = true;
 
                 // 2. Masukkan URL Google Apps Script di sini (SELEPAS DEPLOY)
-                const GOOGLE_SCRIPT_URL = 'https://script.google.com/a/macros/ajobthing.com/s/AKfycbxUxHSmDGI4DbxQdKDpU_qp_r0axvoy-976IGbs_tDZReFMYQ2BM3BeWFmXoDpewJ0DSg/exec';
+                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVlLZ8dJeZOVZGOa_95Rt9rKiBVIsLKX8CkxzPqXBfnlM-lTYst1g-Nmx4QEVR3fZjAg/exec';
 
                 // 3. Sediakan data untuk dihantar (Email + Jawapan Game)
                 const data = new URLSearchParams();
