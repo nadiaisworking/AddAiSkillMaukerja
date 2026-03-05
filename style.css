@@ -957,13 +957,13 @@ p.error-text {
 
     /* === Hero Desktop Restructure === */
     #lobby {
-        padding: 4vh 40px;
-        /* Reduce top and bottom padding using vh */
+        padding: 1.5cm 40px 4vh;
+        /* 1.5cm empty space at the top */
     }
 
     #lobby .content-wrapper {
-        justify-content: center;
-        /* Center everything vertically */
+        justify-content: flex-start;
+        /* Move items to the top */
         align-items: center;
         /* Center everything horizontally */
         gap: 3vh;
@@ -983,30 +983,30 @@ p.error-text {
 
     /* Make the logo prominent but balanced */
     .brand-logo img {
-        height: 56px;
+        height: 80px;
     }
 
     /* Enlarge the text safely, keeping focus on robot */
     h1 {
-        font-size: 2.8rem;
+        font-size: 4.5rem;
     }
 
     .prize-banner {
-        font-size: 1.25rem;
-        padding: 12px 25px;
+        font-size: 1.8rem;
+        padding: 16px 32px;
     }
 
     /* Robot Container: Allow flex growth to take up space */
     .robot-container {
         flex: 1;
         width: 100%;
-        max-height: 55vh;
+        max-height: 65vh;
         /* Ensure it doesn't break boundaries */
     }
 
     /* Make the robot the main attraction without overlapping */
     .robot-base {
-        transform: scale(1);
+        transform: scale(1.45);
         animation: robotFloatDesktop 3.5s ease-in-out infinite;
     }
 
@@ -1014,18 +1014,20 @@ p.error-text {
 
         0%,
         100% {
-            transform: scale(1) translateY(0);
+            transform: scale(1.45) translateY(0);
         }
 
         50% {
-            transform: scale(1) translateY(-10px);
+            transform: scale(1.45) translateY(-10px);
         }
     }
 
     .cta-btnPrimary {
-        font-size: 1.5rem;
-        padding: 20px 40px;
-        border-radius: 30px;
+        font-size: 2rem;
+        padding: 25px 50px;
+        border-radius: 40px;
+        position: relative;
+        z-index: 10;
     }
 
     /* Existing Completion Screen Enhancements */
