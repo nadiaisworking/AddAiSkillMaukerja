@@ -394,11 +394,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 emailError.style.display = 'none';
                 state.answers.email = email;
 
-                // Hide popup
-                emailOverlay.classList.add('hidden');
+                // 1. Tunjuk status "Menghantar..."
+                const originalBtnText = submitEmailBtn.innerText;
+                submitEmailBtn.innerText = "MENGHANTAR...";
+                submitEmailBtn.disabled = true;
 
-                // Proceed to completion screen
-                completeGame();
+                // 2. Masukkan URL Google Apps Script di sini (SELEPAS DEPLOY)
+                const GOOGLE_SCRIPT_URL = 'https://script.google.com/a/macros/ajobthing.com/s/AKfycbxUxHSmDGI4DbxQdKDpU_qp_r0axvoy-976IGbs_tDZReFMYQ2BM3BeWFmXoDpewJ0DSg/exec';
+
+                // 3. Sediakan data untuk dihantar (Email + Jawapan Game)
+                const data = new URLSearchParams();
+                data.append('email', email);
+                data.append('category', state.answers.category || '');
+                data.append('tool', state.answers.tool || '');
+                data.append('usage', state.answers.usage || '');
+
+                // 4. Hantar ke Google Sheet
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Penting untuk elak error CORS dari Google
+                    body: data
+                }).then(() => {
+                    // Berjaya dihantar
+                    submitEmailBtn.innerText = originalBtnText;
+                    submitEmailBtn.disabled = false;
+                    emailOverlay.classList.add('hidden');
+                    completeGame();
+                }).catch(err => {
+                    console.error("Ralat semasa hantar:", err);
+                    // Teruskan paparan walaupun error supaya user tak sangkut
+                    submitEmailBtn.innerText = originalBtnText;
+                    submitEmailBtn.disabled = false;
+                    emailOverlay.classList.add('hidden');
+                    completeGame();
+                });
             } else {
                 emailError.style.display = 'block';
             }
