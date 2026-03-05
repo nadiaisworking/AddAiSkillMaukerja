@@ -1004,10 +1004,9 @@ p.error-text {
         /* Ensure it doesn't break boundaries */
     }
 
-    /* Make the robot the main attraction by enlarging it specifically on desktop */
+    /* Make the robot the main attraction without overlapping */
     .robot-base {
-        transform: scale(2.6);
-        /* + ~18% increase from 2.2 */
+        transform: scale(1);
         animation: robotFloatDesktop 3.5s ease-in-out infinite;
     }
 
@@ -1015,11 +1014,11 @@ p.error-text {
 
         0%,
         100% {
-            transform: scale(2.6) translateY(0);
+            transform: scale(1) translateY(0);
         }
 
         50% {
-            transform: scale(2.6) translateY(-8px);
+            transform: scale(1) translateY(-10px);
         }
     }
 
