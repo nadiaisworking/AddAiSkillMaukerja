@@ -1084,3 +1084,57 @@ p.error-text {
         margin-bottom: 1.5vh;
     }
 }
+
+/* =========================================
+   Desktop Layout Enhancements (Min Width: 769px)
+   ========================================= */
+@media (min-width: 769px) {
+    #app {
+        max-width: 1200px;
+        height: 85vh;
+        max-height: 900px;
+    }
+
+    .game-container {
+        gap: 40px;
+    }
+
+    .game-left {
+        flex: 5;
+        padding-right: 10px;
+    }
+
+    .game-right {
+        flex: 5;
+    }
+
+    /* Transform tokens into a neat grid */
+    .tokens {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        align-content: start;
+    }
+
+    .token {
+        width: 100%;
+        margin: 0;
+        font-size: 1.15rem;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 80px;
+    }
+
+    .instruction-main {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .instruction-sub {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+}
