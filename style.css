@@ -791,8 +791,8 @@ p.error-text {
 
     /* Lobby tweaks */
     .brand-logo img {
-        height: 60px;
-        /* Match closer to desktop size so it's visible on mobile */
+        height: 100px;
+        /* Increased logo size significantly for mobile view */
     }
 
     #lobby header {
